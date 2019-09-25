@@ -2,6 +2,7 @@ import React from "react";
 
 import { connect } from "react-redux";
 import { addItem } from "./actions";
+import { removeItem } from "./actions";
 import { reducer } from "./reducers";
 
 import Header from "./components/Header";
@@ -13,6 +14,7 @@ import AddedFeature from "./components/AddedFeature";
 const App = props => {
   const removeFeature = item => {
     // dispatch an action here to remove an item
+    props.removeItem(item);
   };
 
   const buyItem = item => {
@@ -24,7 +26,7 @@ const App = props => {
     <div className="boxes">
       <div className="box">
         <Header car={props.car} />
-        <AddedFeatures car={props.car} />
+        <AddedFeatures car={props.car} removeFeature={removeFeature} />
       </div>
       <div className="box">
         <AdditionalFeatures store={props.store} buyItem={buyItem} />
@@ -44,5 +46,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { addItem }
+  { addItem, removeItem }
 )(App);
