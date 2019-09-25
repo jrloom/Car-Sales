@@ -37,7 +37,7 @@ export const reducer = (state = initialState, action) => {
               if (item.id !== action.payload.id) {
                 return item;
               }
-              return state;
+              // return state; // removing this throws a warning, adding this breaks the functionality
             })
           ]
         },
