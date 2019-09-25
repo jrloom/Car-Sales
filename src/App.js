@@ -3,13 +3,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { addItem } from "./actions";
 import { removeItem } from "./actions";
-import { reducer } from "./reducers";
 
 import Header from "./components/Header";
 import AddedFeatures from "./components/AddedFeatures";
 import AdditionalFeatures from "./components/AdditionalFeatures";
 import Total from "./components/Total";
-import AddedFeature from "./components/AddedFeature";
 
 const App = props => {
   const removeFeature = item => {
