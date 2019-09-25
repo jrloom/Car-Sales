@@ -1,4 +1,4 @@
-import { ADD_ITEM, REMOVE_ITEM } from "../actions";
+import { ADD_ITEM, REMOVE_ITEM } from "../actions"; // Get the Actions to use in Reducer
 
 const initialState = {
   additionalPrice: 0,
@@ -23,7 +23,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         car: {
           ...state.car,
-          features: [...state.car.features, action.payload]
+          features: [...state.car.features, action.payload] // copies old array, creates new and improved array - maintains immutability
         },
         additionalPrice: (state.additionalPrice += action.payload.price)
       };

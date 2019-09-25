@@ -1,22 +1,25 @@
 import React from "react";
 
+// Connect everything
 import { connect } from "react-redux";
-import { addItem } from "./actions";
-import { removeItem } from "./actions";
+
+// Import actions for onClick functions (dispatches to Reducer), and passing to Connect
+import { addItem, removeItem } from "./actions";
 
 import Header from "./components/Header";
 import AddedFeatures from "./components/AddedFeatures";
 import AdditionalFeatures from "./components/AdditionalFeatures";
 import Total from "./components/Total";
 
+// Pass props for Connect to work
+// This could be destructured for additional clarity on what is being passed, but...
+// ...depending on the project, that could get cumbersome
 const App = props => {
   const removeFeature = item => {
-    // dispatch an action here to remove an item
     props.removeItem(item);
   };
 
   const buyItem = item => {
-    // dipsatch an action here to add an item
     props.addItem(item);
   };
 
@@ -34,6 +37,7 @@ const App = props => {
   );
 };
 
+// Everything UI element above that has props. attached to it is being mapped to state...
 const mapStateToProps = state => {
   return {
     car: state.car,
@@ -42,7 +46,10 @@ const mapStateToProps = state => {
   };
 };
 
+// ...and that state is being passed to Connect along with the actions
 export default connect(
   mapStateToProps,
   { addItem, removeItem }
 )(App);
+
+// Everything in Components is just props being passed down, so didn't comment those
